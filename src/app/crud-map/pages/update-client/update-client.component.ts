@@ -1,12 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-update-client',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './update-client.component.html',
   styles: ``
 })
-export class UpdateClientComponent {
+export default class UpdateClientComponent {
 
 }

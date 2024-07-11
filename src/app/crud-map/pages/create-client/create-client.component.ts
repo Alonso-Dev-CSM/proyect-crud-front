@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-log-in',
+  selector: 'app-create-client',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './log-in.component.html',
+  templateUrl: './create-client.component.html',
   styles: ``
 })
-export class LogInComponent {
+export default class CreateClientComponent {
 
 }
