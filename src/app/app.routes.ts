@@ -27,6 +27,9 @@ export const routes: Routes = [
                 title: 'Update Client',
                 loadComponent: () => import('./crud-map/pages/update-client/update-client.component'),
             },
+            {
+                path: '', redirectTo: 'view-clients', pathMatch: 'full',
+            }
         ]
     }, 
     {

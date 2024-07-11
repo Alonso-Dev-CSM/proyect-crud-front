@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-crud-map',
   standalone: true,
-  imports: [CommonModule],
+  imports: [RouterModule],
   templateUrl: './crud-map.component.html',
 })
 export default class CrudMapComponent {
