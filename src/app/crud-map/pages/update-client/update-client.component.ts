@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
+
+import { Map } from 'mapbox-gl';
 
 @Component({
   selector: 'app-update-client',
@@ -8,6 +10,14 @@ import { Component } from '@angular/core';
   templateUrl: './update-client.component.html',
   styles: ``
 })
-export default class UpdateClientComponent {
+export default class UpdateClientComponent implements AfterViewInit{
+
+  ngAfterViewInit(): void {
+    const map = new Map({
+      container: 'map', // container ID
+      center: [-74.5, 40], // starting position [lng, lat]
+      zoom: 9, // starting zoom
+    })
+  }
 
 }

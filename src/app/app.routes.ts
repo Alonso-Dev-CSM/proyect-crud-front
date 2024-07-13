@@ -4,7 +4,6 @@ export const routes: Routes = [
 
     {
         path: 'crud-map',
-        loadComponent: () => import('./crud-map/crud-map.component'),
         children: [
             {
                 path: 'log-in',
@@ -27,15 +26,15 @@ export const routes: Routes = [
                 loadComponent: () => import('./crud-map/pages/update-client/update-client.component'),
             },
             {
-                path: '', redirectTo: 'view-clients', pathMatch: 'full',
+                path: '', redirectTo: 'create-client', pathMatch: 'full',
             }
         ]
     }, 
     {
-        path: '',
-        redirectTo: '/crud-map',
-        pathMatch: 'full'
+        path: '**',
+        redirectTo: 'crud-map'
     }
+    
 
 
 ];

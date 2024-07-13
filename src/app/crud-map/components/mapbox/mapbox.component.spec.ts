@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CrudMapComponent } from './crud-map.component';
+import { MapboxComponentComponent } from './mapbox.component';
 
-describe('CrudMapComponent', () => {
-  let component: CrudMapComponent;
-  let fixture: ComponentFixture<CrudMapComponent>;
+describe('MapboxComponentComponent', () => {
+  let component: MapboxComponentComponent;
+  let fixture: ComponentFixture<MapboxComponentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CrudMapComponent]
+      imports: [MapboxComponentComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CrudMapComponent);
+    fixture = TestBed.createComponent(MapboxComponentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
