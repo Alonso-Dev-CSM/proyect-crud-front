@@ -1,18 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MapboxComponent } from './mapbox.component';
+import { LoadingComponent } from './loading.component'
 
-describe('MapboxComponentComponent', () => {
-  let component: MapboxComponent;
-  let fixture: ComponentFixture<MapboxComponent>;
+
+describe('LoadingComponent', () => {
+  let component: LoadingComponent;
+  let fixture: ComponentFixture<LoadingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MapboxComponent]
+      imports: [LoadingComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(MapboxComponent);
+    fixture = TestBed.createComponent(LoadingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

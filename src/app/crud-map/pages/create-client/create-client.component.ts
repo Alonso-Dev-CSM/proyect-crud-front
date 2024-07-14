@@ -1,17 +1,25 @@
 import { RouterModule } from '@angular/router';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
+import { MapboxComponent, LoadingComponent } from '../../components';
+import { PlacesService } from '../../services/places-service/places.service';
 
-import { MapboxComponent } from '../../components/mapbox/mapbox.component';
+
 
 
 @Component({
   selector: 'app-create-client',
   standalone: true,
-  imports: [RouterModule, MapboxComponent],
+  imports: [RouterModule, MapboxComponent, LoadingComponent],
   templateUrl: './create-client.component.html',
   styles: ``
 })
-export default class CreateClientComponent {
+export default class CreateClientComponent implements AfterViewInit{
+
+  constructor( private placesService: PlacesService ){}
+
+  ngAfterViewInit(): void {
+    
+  }
 
 
 
