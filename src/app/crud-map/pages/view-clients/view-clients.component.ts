@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-view-clients',
   standalone: true,
-  imports: [CommonModule],
+  imports: [RouterModule],
   templateUrl: './view-clients.component.html',
   styles: ``
 })
