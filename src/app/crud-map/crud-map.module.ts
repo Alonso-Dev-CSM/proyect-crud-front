@@ -11,10 +11,6 @@ import { MapboxService, PlacesService } from './services';
 @Injectable({providedIn: 'root'})
 
 @NgModule({
-  exports: [
-    CommonModule,
-    HttpClientModule, 
-  ],
 
   imports: [
     CommonModule,

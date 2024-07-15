@@ -13,9 +13,7 @@ if( !navigator.geolocation ){
   throw new Error('Navagador sin acceso a Geolocation');
 }
 
-if( environment.production ){
-  enableProdMode();
-}
+
 
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));

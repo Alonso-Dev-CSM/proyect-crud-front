@@ -1,6 +1,6 @@
 import { RouterModule } from '@angular/router';
 import { Component } from '@angular/core';
-import { MapboxComponent, LoadingComponent } from '../../components';
+import { MapboxComponent } from '../../components';
 import { PlacesService, MapboxService } from '../../services';
 
 
@@ -37,7 +37,7 @@ export default class CreateClientComponent {
     if(!this.placesService.isUserLocationReady) throw Error('No hay ubicación de usuario');
     if(!this.mapboxService.isMapReady) throw Error('No hay mapa disponible')
 
-    this.mapbox.flyTo(this.placesService.getPostCode(postalCode)!)
+    this.mapboxService.flyTo(this.placesService.getPostCode(postalCode)!)
   }
 
 

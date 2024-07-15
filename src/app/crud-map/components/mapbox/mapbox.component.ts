@@ -3,14 +3,14 @@ import { AfterViewInit, Component, ElementRef, Injectable, ViewChild } from '@an
 
 import { Map, Popup, Marker, LngLatLike } from 'mapbox-gl'
 import { HttpClient } from '@angular/common/http';
-import {  PlacesService } from '../../services';
-import { MapboxService } from '../../services/mapbox-service/mapbox.service';
+import {  MapboxService, PlacesService } from '../../services';
+import { CrudMapsModule } from '../../crud-map.module';
 
 
 @Component({
   selector: 'app-mapbox',
   standalone: true,
-  imports: [ RouterModule ],
+  imports: [ RouterModule, CrudMapsModule ],
   templateUrl: './mapbox.component.html',
   styles: ``
 })
@@ -29,26 +29,6 @@ export default class MapboxComponent implements AfterViewInit{
     return this.placesService.isUserLocationReady;
   }
 
-  
-
-  setMap( map: Map){
-    this.map = map
-  }
-
-  flyTo( coords: LngLatLike ){
-    if(!this.mapboxService.isMapReady) throw Error('El mapa no esta inicializado')
-
-      this.map.flyTo({
-        center: coords,
-        zoom: 13
-      })
-  }
-  map = new Map({
-    container: this.divmap?.nativeElement, // container ID
-    center: this.placesService.useLocation,
-    zoom: 13
-  });
-
 
   @ViewChild('map') divmap?: ElementRef;
 
@@ -56,14 +36,18 @@ export default class MapboxComponent implements AfterViewInit{
 
     if( !this.divmap ) throw 'Elemento HTML no encontrado';
 
-    
-
     let http = HttpClient;
     this.placesService = new PlacesService();
     await this.placesService.getUserLocation();
     console.log(this.placesService.useLocation)
-  
 
+    const map = new Map({
+      container: this.divmap?.nativeElement, // container ID
+      center: this.placesService.useLocation,
+      zoom: 13
+    });
+
+    
     const popup = new Popup()
       .setHTML(`
           <h6>Aqui estoy<h6/>
@@ -75,9 +59,9 @@ export default class MapboxComponent implements AfterViewInit{
       new Marker({color: color})
         .setLngLat(this.placesService.useLocation)
         .setPopup( popup )
-        .addTo(this.map)
+        .addTo(map)
 
-      this.setMap(this.map)
+      this.mapboxService.setMap(map)
 
   }
  
