@@ -1,7 +1,7 @@
 import { RouterModule } from '@angular/router';
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { MapboxComponent, LoadingComponent } from '../../components';
-import { PlacesService } from '../../services/places-service/places.service';
+import { PlacesService, MapboxService } from '../../services';
 
 
 
@@ -9,16 +9,35 @@ import { PlacesService } from '../../services/places-service/places.service';
 @Component({
   selector: 'app-create-client',
   standalone: true,
-  imports: [RouterModule, MapboxComponent, LoadingComponent],
+  imports: [RouterModule, MapboxComponent],
   templateUrl: './create-client.component.html',
   styles: ``
 })
-export default class CreateClientComponent implements AfterViewInit{
+export default class CreateClientComponent {
 
-  constructor( private placesService: PlacesService ){}
+  constructor( 
+    private placesService: PlacesService,
+    private mapboxService: MapboxService,
+    private mapbox: MapboxComponent
+  ){}
 
-  ngAfterViewInit(): void {
-    
+  private debounceTimer?: NodeJS.Timeout
+
+
+  searchPostCode(postalCode: string = ''){
+    if( this.debounceTimer ) clearTimeout( this.debounceTimer )
+
+      this.debounceTimer = setTimeout(() => {
+        this.placesService.getPostCode(postalCode)
+      }, 500)
+  
+  }
+
+  showPostCode( postalCode: string ){
+    if(!this.placesService.isUserLocationReady) throw Error('No hay ubicación de usuario');
+    if(!this.mapboxService.isMapReady) throw Error('No hay mapa disponible')
+
+    this.mapbox.flyTo(this.placesService.getPostCode(postalCode)!)
   }
 
 

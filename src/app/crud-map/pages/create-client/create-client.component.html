@@ -59,7 +59,9 @@
                     </div> <br>
                     <div class="col">
                         <label for="codigo-postal" class="form-label">Código Postal</label> <br>
-                        <input type="text" id="codigo-postal" class="form-control" name="codigo-postal" placeholder="Código Postal">
+                        <input type="text" id="codigo-postal" class="form-control" name="codigo-postal" placeholder="Código Postal"
+                            #txtpostCode (keyup)="searchPostCode(txtpostCode.value)"
+                        >
                     </div> <br>    
                 </div> <br>
 
@@ -69,7 +71,10 @@
                         <input type="text" id="referencia" class="form-control" name="referencia" placeholder="Referencia">
                     </div> <br>
                     <div class="col text-center">
-                        <button type="button" class="btn btn-secondary">Buscar</button>
+                        <button type="button" 
+                            class="btn btn-secondary"
+                            (click)="showPostCode(txtpostCode.value)"
+                        >Buscar</button>
                     </div>
                 </div> <br>
                 <br>
